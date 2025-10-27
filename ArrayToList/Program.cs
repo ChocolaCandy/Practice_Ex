@@ -197,10 +197,10 @@
             Array.Clear(_array, _count, 1);
         }
 
-        //리스트 요소들 오름차순 정렬
+        //리스트 요소들 오름차순 정렬 메서드
         public void Sort() => Array.Sort(_array, 0, _count);
 
-        //리스트 요소들 배열 반환
+        //리스트 요소들 배열 반환 메서드
         public T[] ToArray()
         {
             T[] newArray = new T[_count];
@@ -208,7 +208,7 @@
             return newArray;
         }
 
-        //자르기
+        //리스트 요소 부분 자르기 메서드
         public List<T> Slice(int index, int length)
         {
             CheckOutOfRange(index, true);
@@ -221,7 +221,7 @@
             return sliceList;
         }
 
-        //리스트 크기 조정
+        //리스트 크기 조정 메서드
         private void Resize(int capacity)
         {
             int newCapacity = _array.Length == 0 ? default_Capacity : _array.Length * 2;
