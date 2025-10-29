@@ -74,7 +74,7 @@
                 }
                 catch (ArgumentNullException)
                 {
-                    Console.WriteLine($"Constructor Parameter Stack<T> cannot be null.");
+                    Console.WriteLine($"Constructor Parameter StackByArray<T> cannot be null.");
                     Environment.Exit(-1);
                 }
             }
