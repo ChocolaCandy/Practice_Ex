@@ -4,11 +4,17 @@
     {
         static void Main(string[] args)
         {
-            StackByArray<int> stack = new StackByArray<int>();
-            stack.Push(12);
-            stack.Push(345);
-            stack.Push(6789);
-            stack.State();
+            //StackByArray<int> arrayStack = new StackByArray<int>();
+            //arrayStack.Push(12);
+            //arrayStack.Push(345);
+            //arrayStack.Push(6789);
+            //arrayStack.State();
+
+            StackByLinkedList<int> linkedListStack = new StackByLinkedList<int>();
+            linkedListStack.Push(12);
+            linkedListStack.Push(345);
+            linkedListStack.Push(6789);
+            linkedListStack.State();
         }
     }
 }
