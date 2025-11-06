@@ -1,15 +1,15 @@
 ﻿namespace Queue
 {
-    internal class Program
+    class Program
     {
- 
         static void Main(string[] args)
         {
-            Queue<int> queue = new Queue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Dequeue();
-            queue.Enqueue(3);
+            Deque<int> queue = new Deque<int>();
+            for (int i = 1; i < 3; i++)
+            {
+                queue.EnqueueFront(i);
+            }
+            queue.EnqueueRear(3);
             queue.Print();
         }
     }
