@@ -2,7 +2,7 @@
 {
     public static class GraphData
     {
-        private const int NULL = 9999;
+        public const int NULL = 9999;
 
         public static readonly int[,] Graph_1 =
         {

@@ -8,7 +8,7 @@
 
         public Dijkstra(int[,] graph)
         {
-            CheckGraph(graph);
+            GraphStaticClass.CheckGraph(graph);
             _graph = (int[,])graph.Clone();
             _visited = Enumerable.Repeat(false, graph.GetLength(0)).ToArray();
             _distance = Enumerable.Repeat(int.MaxValue, graph.GetLength(0)).ToArray();
@@ -18,6 +18,7 @@
         public void Run(int start, int end)
         {
             int verticesCount = _visited.Length;
+            OutOfRangeException(start, verticesCount);
             OutOfRangeException(end, verticesCount);
 
             for (int vertex = 0; vertex < verticesCount; vertex++)
@@ -41,7 +42,7 @@
                 }
             }
 
-            Console.WriteLine($"{start} to {end} shortest distance : {_distance[end]}");
+            Console.WriteLine($"[Dijkstra] {start} to {end} shortest distance : {_distance[end]}");
         }
 
         //방문하지 않은 최단경로 정점 반환 메서드
@@ -61,40 +62,17 @@
             return shortestVertex;
         }
 
-        //그래프 정상 여부 확인 메서드
-        private static void CheckGraph(int[,] graph)
-        {
-            int rowLength = graph.GetLength(0);
-            int colLength = graph.GetLength(1);
-            try
-            {
-                if (rowLength != colLength) { throw new Exception(); }
-                for (int i = 0; i < rowLength; i++)
-                {
-                    for (int j = i; j < colLength; j++)
-                    {
-                        if (graph[i,j] != graph[j,i]) { throw new Exception(); }
-                    }
-                }
-                Console.WriteLine("Input graph data successful.");
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("Input graph data failed.");
-                Environment.Exit(-1);
-            }
-        }
-
         //배열 범위 확인 메서드
         private static void OutOfRangeException(int value, int other)
         {
             try
             {
+                ArgumentOutOfRangeException.ThrowIfNegative(value);
                 ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(value, other);
             }
             catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("End index is out of range.");
+                Console.WriteLine($"{value} is out of range.");
                 Environment.Exit(-1);
             }
         }
